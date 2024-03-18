@@ -33,6 +33,7 @@ button{
     border-radius: 6px;
     cursor: pointer;
     margin: 12px 0;
+    font-size: 2em;
 }
 
 .altura{
