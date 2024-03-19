@@ -11,6 +11,12 @@
     width: 100%;
 }
 
+@media (max-width:678px){
+    *{
+        margin: 2px;
+    }
+}
+
 :root{
     --corPrincipal: #4a69bd;
     --corSecundaria: #111;

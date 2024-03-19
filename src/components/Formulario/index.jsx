@@ -7,11 +7,33 @@ const Formulario = ({ calcularIMC }) => {
     const [altura, setAltura] = useState('');
     const [peso, setPeso] = useState('');
 
+
+    const valorIMC = () =>{
+        try{
+            const alturaNumerica = parseFloat(altura.replace(',','.'));
+            const pesoNumerico = parseFloat(peso.replace(',','.'));
+
+            if (isNaN(pesoNumerico) || isNaN(alturaNumerica) || pesoNumerico < 0 || alturaNumerica < 0){
+                throw new Error("Error: Preencha os campos com números válidos");
+            }
+
+            if (alturaNumerica <= 1 || alturaNumerica > 2.5){
+                throw new Error("A altura precisa ser entre: 1 ~ 2.5 metros")
+            }
+            calcularIMC(alturaNumerica, pesoNumerico);
+
+            setPeso("");
+            setAltura("");
+        }catch (error){
+            alert(error.message);
+            setPeso("");
+            setAltura("");
+        }
+    };
+
     const handleSubmit = (e) => {
         e.preventDefault();
-        const alturaNumerica = parseFloat(altura.replace(',','.'));
-        const pesoNumerico = parseFloat(peso.replace(',','.'));
-        calcularIMC(alturaNumerica,pesoNumerico);
+        valorIMC();
     };
 
     
